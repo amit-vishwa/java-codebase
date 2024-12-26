@@ -1,4 +1,4 @@
-package tutorial.dsa.algorithms.hashing;
+package tutorial.dsa.datastructures.hash;
 
 import java.util.ArrayList;
 import java.util.Objects;
