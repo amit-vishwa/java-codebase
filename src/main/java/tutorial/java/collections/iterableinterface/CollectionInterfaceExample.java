@@ -1,4 +1,4 @@
-package tutorial.java.collections;
+package tutorial.java.collections.iterableinterface;
 
 import java.util.ArrayList;
 import java.util.Collection;

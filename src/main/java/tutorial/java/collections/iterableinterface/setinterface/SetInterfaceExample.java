@@ -1,4 +1,4 @@
-package tutorial.java.collections.setinterface;
+package tutorial.java.collections.iterableinterface.setinterface;
 
 import java.util.Arrays;
 import java.util.HashSet;
