@@ -1,4 +1,4 @@
-package tutorial.java.io;
+package tutorial.java.io.misc;
 
 // Working program using Reader Class
 import java.io.DataInputStream;

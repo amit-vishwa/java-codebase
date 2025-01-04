@@ -1,4 +1,4 @@
-package tutorial.java.io;
+package tutorial.java.io.misc;
 
 import java.util.Date;
 

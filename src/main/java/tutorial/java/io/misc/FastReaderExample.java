@@ -1,4 +1,4 @@
-package tutorial.java.io;
+package tutorial.java.io.misc;
 
 // Working program with FastReader
 import java.io.BufferedReader;

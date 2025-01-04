@@ -1,4 +1,4 @@
-package tutorial.java.io;
+package tutorial.java.io.misc;
 
 // Java Program for taking user
 // input using BufferedReader Class
