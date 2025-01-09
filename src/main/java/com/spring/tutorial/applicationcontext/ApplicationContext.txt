@@ -1,0 +1,29 @@
+
+Refer: https://www.geeksforgeeks.org/spring-applicationcontext/?ref=next_article
+
+1.Spring – ApplicationContext
+ApplicationContext belongs to the Spring framework. Spring IoC container is responsible for instantiating,
+wiring, configuring, and managing the entire life cycle of beans or objects. BeanFactory and ApplicationContext
+represent the Spring IoC Containers. ApplicationContext is the sub-interface of BeanFactory. It is used when
+we are creating an enterprise-level application or web application. ApplicationContext is the superset of
+BeanFactory, whatever features provided by BeanFactory are also provided by ApplicationContext.
+
+2.ApplicationContext Features
+ApplicationContext provides basic features in addition to enterprise-specific functionalities which are as
+follows:
+- Publishing events to registered listeners by resolving property files.
+- Methods for accessing application components.
+- Supports Internationalization.
+- Loading File resources in a generic fashion.
+
+Note: It is because of these additional features, developers prefer to use ApplicationContext over BeanFactory.                                                                                                                                                                                              Spring – BeanFactory : It provides basic functionalities and is recommended for use for lightweight applications like mobile and applets.
+
+3.ApplicationContext Implementation Classes
+There are different types of Application containers provided by Spring for different requirements as listed
+below which later onwards are described alongside with declaration, at lastly providing an example to get
+through the implementation part with the pictorial aids. Containers are as follows:
+- AnnotationConfigApplicationContext container
+- AnnotationConfigWebApplicationContext
+- XmlWebApplicationContext
+- FileSystemXmlApplicationContext
+- ClassPathXmlApplicationContext
