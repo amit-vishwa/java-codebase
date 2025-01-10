@@ -1,0 +1,23 @@
+
+Refer: https://www.geeksforgeeks.org/spring-difference-between-beanfactory-and-applicationcontext/?ref=lbp
+
+Spring – Difference Between BeanFactory and ApplicationContext
+
+Spring is one of the most popular Java EE frameworks. It is an open-source lightweight framework that allows
+Java EE developers to build simple, reliable, and scalable enterprise applications. It provides
+Aspect-oriented programming. It provides support for all generic and middleware services and mainly focuses
+on providing various ways to help you manage your business objects. It is a modularized framework where all
+the modules are designed on the concept called “Dependency Injection”.
+
+Dependency Injection: Dependency Injection is a design pattern that allows the spring container to ‘inject’
+objects into other objects or dependencies. In simple words, the control of creating objects and managing the
+spring components is taken care of by the Spring containers.
+
+Spring Containers
+Spring Framework provides two of the most fundamental and important packages, they are the
+org.springframework.beans and org.springframework.context packages. Code in these packages provides the basis
+for Spring’s Inversion of Control/Dependency Injection features. Spring containers are responsible for
+creating bean objects and injecting them into the classes. The two containers are namely,
+i.BeanFactory(I) – Available in org.springframework.beans.factory package.
+ii.ApplicationContext(I) – Available in org.springframework.context package.
+
