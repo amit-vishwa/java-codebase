@@ -1,4 +1,4 @@
-package com.spring.tutorial.applicationcontext;
+package com.spring.tutorial.ioc.applicationcontext;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -36,14 +36,14 @@ public class DemoApplication {
     }
 
     static void usingFileSystemXmlApplicationContext(){
-        String path = "src/main/resources/application-context-demo.xml";
+        String path = "src/main/resources/ioc/application-context-demo.xml";
         ApplicationContext context = new FileSystemXmlApplicationContext(path);
         Student student = context.getBean("student", Student.class);
         System.out.println("Using file system xml application context: " + student);
     }
 
     static void usingClassPathXmlApplicationContext(){
-        String path = "application-context-demo.xml";
+        String path = "ioc/application-context-demo.xml";
         ApplicationContext context = new ClassPathXmlApplicationContext(path);
         Student student = context.getBean("student", Student.class);
         System.out.println("Using class path xml application context: " + student);
