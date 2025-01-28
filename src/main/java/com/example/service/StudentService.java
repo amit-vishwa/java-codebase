@@ -11,15 +11,29 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import com.example.entity.Student;
+import com.example.repository.DepartmentRepository;
 import com.example.repository.StudentRepository;
+import com.example.repository.SubjectRepository;
 
 @Service
 public class StudentService {
 
 	@Autowired
+	private SubjectRepository subjectRepository;
+
+	@Autowired
 	private StudentRepository studentRepository;
 
+	@Autowired
+	private DepartmentRepository departmentRepository;
+
 	public Student createStudent(Student document) {
+		if (document.getDepartment() != null) {
+			departmentRepository.save(document.getDepartment());
+		}
+		if (document.getSubjects() != null && document.getSubjects().size() > 0) {
+			subjectRepository.saveAll(document.getSubjects());
+		}
 		return studentRepository.save(document);
 	}
 
@@ -97,6 +111,10 @@ public class StudentService {
 
 	public List<Student> getStudentsByNameStartingWith(String name) {
 		return studentRepository.findByNameStartsWith(name);
+	}
+
+	public List<Student> getStudentByDepartmentId(String departmentId) {
+		return studentRepository.findByDepartmentId(departmentId);
 	}
 
 }

@@ -16,8 +16,8 @@ public interface StudentRepository extends MongoRepository<Student, String> {
 
 	List<Student> findByNameOrEmail(String name, String email);
 
+	// Below 2 queries will work when documents are embedded and DBRef is not used
 	List<Student> findByDepartmentDepartmentName(String name);
-
 	List<Student> findBySubjectsSubjectName(String name);
 
 	List<Student> findByEmailIsLike(String email);
@@ -25,4 +25,6 @@ public interface StudentRepository extends MongoRepository<Student, String> {
 	List<Student> findByNameStartsWith(String name);
 //	List<Student> findByNameStartingWith(String name); // similar to above
 
+	List<Student> findByDepartmentId(String departmentId);
+	
 }

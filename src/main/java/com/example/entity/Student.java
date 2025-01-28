@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "student")
@@ -14,7 +15,10 @@ public class Student {
 	private String id;
 	private String name;
 	private String email;
+
+	@DBRef // notifies that it is reference to another collection
 	private Department department;
+	@DBRef(lazy = true) // with lazy loading, data is provided only when required
 	private List<Subject> subjects;
 
 	@Transient // this will get ignored while save and update operations

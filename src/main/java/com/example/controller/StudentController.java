@@ -99,4 +99,9 @@ public class StudentController {
 		return studentService.getStudentsByNameStartingWith(name);
 	}
 
+	@GetMapping("/getByDepartmentId/{departmentId}")
+	public List<Student> getStudentByDepartmentName(@PathVariable String departmentId) {
+		return studentService.getStudentByDepartmentId(departmentId);
+	}
+
 }
