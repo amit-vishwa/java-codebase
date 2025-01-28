@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "student")
@@ -15,6 +16,21 @@ public class Student {
 	private String email;
 	private Department department;
 	private List<Subject> subjects;
+
+	@Transient // this will get ignored while save and update operations
+	private double percentage;
+
+	public double getPercentage() {
+		if (subjects.size() > 0) {
+			int sum = subjects.stream().map(Subject::getMarksObtained).reduce(0, Integer::sum);
+			return sum / subjects.size();
+		}
+		return 0.00;
+	}
+
+	public void setPercentage(double percentage) {
+		this.percentage = percentage;
+	}
 
 	public Student() {
 		super();

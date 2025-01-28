@@ -3,6 +3,10 @@ package com.example.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -45,12 +49,54 @@ public class StudentService {
 		if (!ObjectUtils.isEmpty(student.getSubjects())) {
 			model.setSubjects(student.getSubjects());
 		}
+		if (!ObjectUtils.isEmpty(student.getPercentage())) {
+			model.setPercentage(student.getPercentage());
+		}
 		return studentRepository.save(model);
 	}
 
 	public String deleteStudent(String id) {
 		studentRepository.deleteById(id);
 		return "Student has been deleted!";
+	}
+
+	public List<Student> getStudentByName(String name) {
+		return studentRepository.findByName(name);
+	}
+
+	public List<Student> getStudentByNameAndEmail(String name, String email) {
+		return studentRepository.findByNameAndEmail(name, email);
+	}
+
+	public List<Student> getStudentByNameOrEmail(String name, String email) {
+		return studentRepository.findByNameOrEmail(name, email);
+	}
+
+	public Page<Student> getAllStudentsOnPage(Integer pageNo, Integer pageSize) {
+		Pageable pageable = PageRequest.of(pageNo - 1, pageSize); // page no is 0 based
+		return studentRepository.findAll(pageable);
+	}
+
+	public List<Student> getSortedStudents() {
+		// multiple fields can be passed
+		Sort sort = Sort.by(Sort.Direction.ASC, "name");
+		return studentRepository.findAll(sort);
+	}
+
+	public List<Student> getStudentsByDepartmentName(String name) {
+		return studentRepository.findByDepartmentDepartmentName(name);
+	}
+
+	public List<Student> getStudentsBySubjectName(String subjectName) {
+		return studentRepository.findBySubjectsSubjectName(subjectName);
+	}
+
+	public List<Student> getStudentsByEmailLike(String email) {
+		return studentRepository.findByEmailIsLike(email);
+	}
+
+	public List<Student> getStudentsByNameStartingWith(String name) {
+		return studentRepository.findByNameStartsWith(name);
 	}
 
 }
