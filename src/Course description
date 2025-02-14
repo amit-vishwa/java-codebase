@@ -1,0 +1,313 @@
+Description
+[ Major Update : Complete Course updated on December 2024 ]
+
+Learn the new Java 8, Java ll, Java 17, Java 21 Features by coding it,This is a pure coding course and you will get a complete understanding of all the Java 8, Java ll, Java 17, Java 21 features by coding it
+
+Why Should I take this course ?
+
+This course will help the Java developers to build their knowledge on the new Java 8 features
+
+All the new features such as Lambdas, Streams , Optionals, Functional Interfaces and Parallel Programming will be explained via code
+
+This course will give you the confidence on implementing new Java 8 features in real Java projects
+
+By the end of this course you will have a complete understanding of new Java 8 functional features
+
+Course Overview :
+
+Section 1 - Getting Started:
+
+This section explains about what will be covered in this course
+
+Section 2 - Why Java-8 ?:
+
+This section covers Why Java 8 is important?
+
+This section explains about difference between Imperative Programming and Declarative Programming
+
+Section 3 - WorkSpace Setup - Mac/Windows:
+
+This section covers the installation of Java and IntelliJ in Mac and Windows
+
+Section 4: Introduction to Lambda
+
+This section covers the Why Lambda is needed , Lambdas Syntax and How to implement Lambdas ?
+
+Implement the Runnable interface using Lambdas
+
+Implement the Comparator interface using Lambdas
+
+Section 5: Lambdas and Functional Interfaces
+
+This section covers the new Functional Interfaces that got introduced as part of Java 8
+
+Consumer Functional Interface
+
+Predicate Functional Interface
+
+Function Functional Interface
+
+Supplier Functional Interface
+
+Section 6 : Constructor and Method References
+
+This section covers the new Method Reference and the Constructor Reference
+
+How Method Reference simplifies the code
+
+How to use Method reference along with Lambdas
+
+How to use Constructor Reference to create new objects
+
+Section 7 : Lambdas and Local variables ( Effectively Final )
+
+This section covers the local variable and how it should used in Lambdas
+
+Definition of Effectively Final scope of a variable
+
+Section 8 : Streams API
+
+This section covers the Streams API which is one of the important feature that got introduced as part of Java8
+
+How the Stream API Works Internally ?
+
+How Collections are different from Streams ?
+
+How to debug a Stream ?
+
+Section 9 : Streams API Operations
+
+This section covers different Streams API operations that can be used in Streams to achieve an objective
+
+Streams Operations such as :
+
+map()
+
+flatMap()
+
+distinct()
+
+count()
+
+filter()
+
+reducer()
+
+Map, Filter and Reduce pattern
+
+max()
+
+min()
+
+limit()
+
+skip()
+
+allMatch(), anyMatch() and noneMatch()
+
+findAny() and findFirst()
+
+Explanation of Stream operations that are Short Circuit operations
+
+Section 10 : Streams API - Factory Methods
+
+This section covers different Streams API factory method that can be used to create Streams
+
+Section 11: Numeric Streams
+
+This section covers the Introduction to Numeric Streams which can be used to perform some numeric related operations
+
+Section 12: Terminal Operations Streams
+
+This section covers different way to collect the data from the Streams Pipeline
+
+Terminal Operations such as :
+
+joining()
+
+counting()
+
+mapping()
+
+max(), min()
+
+sum()
+
+average()
+
+groupingBy()
+
+partitioningBy()
+
+Section 13: Streams API - Parallel Processing
+
+This section covers how to perform the Parallel processing using Streams
+
+How Parallel Programming makes use of the processors in your machine to perform concurrency operations?
+
+How Parallel Programming works internally ?
+
+How to check the performance between the sequential and parallel programming ?
+
+Scenarios when not to use parallel programming
+
+Section 14: Optional
+
+This section covers What is Optional and the benefits of Optional
+
+How Optional can help you avoid Null Pointer exception
+
+Exploring the different operations that are part of Optional such as :
+
+empty()
+
+ofNullable()
+
+of()
+
+orElse()
+
+orElseGet()
+
+orElseThrow()
+
+isPresent()
+
+ifPresent()
+
+map()
+
+flatMap()
+
+filter()
+
+Section 12: Streams API - Parallel Processing
+
+This section covers how to perform the Parallel processing using Streams
+
+How Parallel Programming makes use of the processors in your machine to perform concurrency operations?
+
+How Parallel Programming works internally ?
+
+How to check the performance between the sequential and parallel programming ?
+
+Scenarios when not to use parallel programming
+
+Section 13: Optional
+
+This section covers What is Optional and the benefits of Optional
+
+How Optional can help you avoid Null Pointer exception
+
+Exploring the different operations that are part of Optional such as :
+
+empty()
+
+ofNullable()
+
+of()
+
+orElse()
+
+orElseGet()
+
+orElseThrow()
+
+isPresent()
+
+ifPresent()
+
+map()
+
+flatMap()
+
+filter()
+
+Section 14: New Date/Time Libraries
+
+This section covers new Date/Time Libraries such as LocalDate, LocalTime, LocalDateTime
+
+How to find the difference between the LocalDate, LocalTime and LocalDateTime using Period, Duration
+
+How to represent the time in the Machine Readable Format using Instant
+
+How to use the TimeZone using the ZonedDateTime
+
+How to Format the Date using the DateTimeFormatter
+
+
+
+Section 15: Local Variable Type Inference (LVTI) using var
+
+In this section, we will code and learn about the LVTI feauture to simply local variable declaration using type inference.
+
+Section 16: Text Blocks
+
+In this section, we will code and learn about the TextBlocks which enhances the power of String in Java.
+
+Section 17: Enhanced Switch
+
+In this section, we will code and learn about the new Switch which is an expression.
+
+Switch - as an Expression
+
+Multiline switch expression using "yield"
+
+Enhanced Switch are exhaustive
+
+Section 18 : Records
+
+In this section, we will code and explore the record classes concept in Modern Java.
+
+Records Classes
+
+Custom Constructors and Validations in Record Classes
+
+Object Equality in Record Clases
+
+Section 19  : Pattern Matching
+
+In this section, we will code and learn about pattern matching.
+
+Introduction to Pattern Matching
+
+Record Patterns - Pattern Matching on Records
+
+Guarded Patterns
+
+Section 20 : ChekoutService Application [ Real Time Usecase]
+
+In this section, we will implement a realtime application using all the modern java concepts that we have learned so far.
+
+Section 21 : Simple Web Server
+
+In this section, I will give you a demonstration of jwebserver and how it serves the files and folders as resources.
+
+Section 22 : New Http Client
+
+In this section, we will code and explore the new HTTP Client that has support for HTTP2/Websockets.
+
+New HttpClient - GET Request to retrieve movie by ID
+
+JUnit test for the HTTP Client
+
+Build HTTPClient in Asynchronous mode
+
+Build HTTP Client - GET Request to Retrieve AllMovies
+
+Section 23 : Java Platform Module System (JPMS)
+
+In this section, we will code and learn about how to build java application using JPMS or modules.
+
+Introduction to JPMSBuild a Java app using JPMS
+
+Working with Multiple Modules
+
+Working with Multiple Modules - Transitively
+
+Unnamed Modules and Automatic Modules
+
+
+
+By the end of this course you will have a complete understanding of all the Java 8, Java ll, Java 17, Java 21  features and implement it in real Java projects
+
