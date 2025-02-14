@@ -12,3 +12,6 @@ iii. Spring
 
 iv. MongoDB
 - It consists of a MongoDB tutorial covering basic CRUD operations using Springboot
+
+v. Java8
+- It consists of various Java 8 topics to have a quick revision
