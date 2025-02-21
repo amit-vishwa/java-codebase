@@ -1,0 +1,30 @@
+Section 29 consists of JPMS (Java Platform Module System).
+Module systems were introduced post Java 8.
+Previously all java packages were visible to users i.e. all public classes were accessible.
+This was also a security risk as those can be modified.
+Later modular approach were invented to hide non-required packages from users.
+Only required packages were exposed in JAR files.
+
+module-info.java file stores are package information that needs to be exported in a JAR file
+This file also keeps track of explicitly added packages that are not part of java.lang
+
+Modules can be used as dependency in another modules or simple non-modular project.
+
+For below moduletwo will be printed if tried to print module name.
+Will have unnamed module (from Java 9) printed if no module is there in the project.
+It is added to execute a non-modular code in modular format.
+
+// Unnamed module - Below command is to execute non-modular jar file with module name as unnamed
+java --class-path build/libs/modulename.jar main.class.package.Classname
+
+// Automatic module - Below command is to execute non-modular jar file with module name as specified in command 
+java --module-path build/libs -m modulename/main.class.package.Classname
+
+module-info.java
+
+module moduletwo{
+	// requires moduleone; // moduletwo is dependent on moduleone
+	requires transitive moduleone; // moduletwo is dependent on moduleone and any project using moduletwo can use moduleone
+	exports com.moduletwo.dtos; // exposes dtos
+	exports com.moduletwo.services; // exposes services
+}
