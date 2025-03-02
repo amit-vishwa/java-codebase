@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/java-codebase.iml" filepath="$PROJECT_DIR$/.idea/java-codebase.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/parallel-asyncronous.main.iml" filepath="$PROJECT_DIR$/.idea/modules/parallel-asyncronous.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/parallel-asyncronous.test.iml" filepath="$PROJECT_DIR$/.idea/modules/parallel-asyncronous.test.iml" />
     </modules>
   </component>
 </project>
