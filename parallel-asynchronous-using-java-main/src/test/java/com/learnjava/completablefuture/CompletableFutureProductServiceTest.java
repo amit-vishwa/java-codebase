@@ -1,6 +1,7 @@
 package com.learnjava.completablefuture;
 
 import com.learnjava.domain.Product;
+import com.learnjava.service.InventoryService;
 import com.learnjava.service.ProductInfoService;
 import com.learnjava.service.ReviewService;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CompletableFutureProductServiceTest {
 
     public CompletableFutureProductService service = new CompletableFutureProductService(new ProductInfoService(),
-            new ReviewService());
+            new ReviewService(), new InventoryService());
 
     @Test
     void retrieveProductDetails() {
@@ -44,6 +45,34 @@ class CompletableFutureProductServiceTest {
             assertFalse(product.getProductInfo().getProductOptions().isEmpty());
         }).join();
         timeTaken();
+    }
+
+    @Test
+    void retrieveProductDetailsWithInventory() {
+        // given
+        String productId = "ABC123";
+        // when
+        Product product = service.retrieveProductDetailsWithInventory(productId);
+        // then
+        assertNotNull(product);
+        assertNotNull(product.getReview());
+        assertNotNull(product.getProductInfo());
+        assertFalse(product.getProductInfo().getProductOptions().isEmpty());
+        product.getProductInfo().getProductOptions().forEach(prod -> assertNotNull(prod.getInventory()));
+    }
+
+    @Test
+    void retrieveProductDetailsWithAsyncInventory() {
+        // given
+        String productId = "ABC123";
+        // when
+        Product product = service.retrieveProductDetailsWithInventory(productId);
+        // then
+        assertNotNull(product);
+        assertNotNull(product.getReview());
+        assertNotNull(product.getProductInfo());
+        assertFalse(product.getProductInfo().getProductOptions().isEmpty());
+        product.getProductInfo().getProductOptions().forEach(prod -> assertNotNull(prod.getInventory()));
     }
 
 }
