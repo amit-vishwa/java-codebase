@@ -61,6 +61,24 @@ class CompletableFutureHelloWorldTest {
     }
 
     @Test
+    void combineThreeCompletable_Log() {
+        // given
+        // when
+        String string = cfhw.combineThreeCompletable_Log();
+        // then
+        assertEquals("HELLO WORLD! HI COMPLETABLEFUTURE!",string);
+    }
+
+    @Test
+    void combineThreeCompletable_ThreadPool() {
+        // given
+        // when
+        String string = cfhw.combineThreeCompletable_customThreadPool();
+        // then
+        assertEquals("HELLO WORLD! HI COMPLETABLEFUTURE!",string);
+    }
+
+    @Test
     void combineFourCompletable() {
         // given
         // when

@@ -3,6 +3,8 @@ package com.learnjava.completablefuture;
 import com.learnjava.service.HelloWorldService;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static com.learnjava.util.CommonUtil.*;
 import static com.learnjava.util.LoggerUtil.log;
@@ -61,6 +63,62 @@ public class CompletableFutureHelloWorld {
                 .thenCombine(wcf, String::concat) // used method ref instead of below
                 .thenCombine(hicf,(prev,curr)-> prev.concat(curr))
                 .thenApply(String::toUpperCase)
+                .join();
+        timeTaken();
+        return response;
+    }
+
+    public String combineThreeCompletable_Log(){
+        stopWatchReset();
+        startTimer();
+        CompletableFuture<String> hcf = CompletableFuture.supplyAsync(hws::hello);
+        CompletableFuture<String> wcf = CompletableFuture.supplyAsync(hws::world);
+        CompletableFuture<String> hicf = CompletableFuture.supplyAsync(()->{
+            delay(1000);
+            return " Hi CompletableFuture!";
+        });
+        String response = hcf
+                .thenCombine(wcf, (h,w) -> {
+                    log("inside thenCombine of hello for world");
+                    return h.concat(w);
+                })
+                .thenCombine(hicf,(prev,curr) -> {
+                    log("inside thenCombine of hi for helloworld");
+                    return prev.concat(curr);
+                })
+                .thenApply(res -> {
+                    log("inside thenApply of hi for hicompletablefuturehelloworld");
+                    return res.toUpperCase();
+                })
+                .join();
+        timeTaken();
+        return response;
+    }
+
+    public String combineThreeCompletable_customThreadPool(){
+        stopWatchReset();
+        startTimer();
+        ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime()
+                .availableProcessors());
+        CompletableFuture<String> hcf = CompletableFuture.supplyAsync(hws::hello,executorService);
+        CompletableFuture<String> wcf = CompletableFuture.supplyAsync(hws::world,executorService);
+        CompletableFuture<String> hicf = CompletableFuture.supplyAsync(()->{
+            delay(1000);
+            return " Hi CompletableFuture!";
+        },executorService);
+        String response = hcf
+                .thenCombine(wcf, (h,w) -> {
+                    log("inside thenCombine of hello for world");
+                    return h.concat(w);
+                })
+                .thenCombine(hicf,(prev,curr) -> {
+                    log("inside thenCombine of hi for helloworld");
+                    return prev.concat(curr);
+                })
+                .thenApply(res -> {
+                    log("inside thenApply of hi for hicompletablefuturehelloworld");
+                    return res.toUpperCase();
+                })
                 .join();
         timeTaken();
         return response;
