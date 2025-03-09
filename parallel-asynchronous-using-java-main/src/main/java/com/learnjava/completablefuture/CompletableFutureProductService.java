@@ -71,17 +71,22 @@ public class CompletableFutureProductService {
         CompletableFuture<ProductInfo> completableFutureProductInfo = CompletableFuture
                 .supplyAsync(()-> productInfoService.retrieveProductInfo(productId))
                 .thenApply(productInfo -> {
-                    productInfo.setProductOptions(updateProductInfo(productInfo)); // blocking call
+//                    productInfo.setProductOptions(updateProductInfo(productInfo)); // blocking call
                     // uncomment below for retrieveProductDetailsWithAsyncInventory testcase
-//                    productInfo.setProductOptions(updateProductInfoUsingCompletableFuture(productInfo));
+                    productInfo.setProductOptions(updateProductInfoUsingCompletableFuture(productInfo));
                     return productInfo;
                 });
         CompletableFuture<Review> completableFutureReview = CompletableFuture
-                .supplyAsync(()-> reviewService.retrieveReviews(productId));
+                .supplyAsync(()-> reviewService.retrieveReviews(productId))
+                .exceptionally(e->{ // added to handle and recover from exception
+                    log(e.getMessage());
+                    return Review.builder().noOfReviews(0).overallRating(0.0).build();
+                });
 
         Product product = completableFutureProductInfo
                 .thenCombine(completableFutureReview,(productInfo,review)->
                         new Product(productId, productInfo, review))
+                .whenComplete((prod,ex)->log("Exception occurred for " + prod))
                 .join();
 
         stopWatch.stop();
@@ -107,7 +112,11 @@ public class CompletableFutureProductService {
                 .stream()
                 .map(productOption -> {
                     CompletableFuture<Inventory> inventoryCompletableFuture = CompletableFuture
-                        .supplyAsync(() -> inventoryService.addInventory(productOption));
+                        .supplyAsync(() -> inventoryService.addInventory(productOption))
+                            .exceptionally(ex->{
+                                log(ex.getMessage());
+                                return Inventory.builder().count(1).build();
+                            });
                     CompletableFuture<ProductOption> productOptionCompletableFuture = inventoryCompletableFuture
                             .thenApply(inventory -> {
                                 productOption.setInventory(inventory);
