@@ -75,4 +75,19 @@ class MoviesClientTest {
         assertEquals("Batman Begins", movies.get(0).getMovieInfo().getName());
     }
 
+    @RepeatedTest(10)
+    void retrieveMoviesCFAllOf() {
+        stopWatchReset();
+        startTimer();
+        // given
+        List<Long> movieInfoIds = List.of(1L,2L,3L,4L,5L);
+        // when
+        List<Movie> movies = moviesClient.retrieveMovies_CF_allOf(movieInfoIds);
+        System.out.println(movies);
+        timeTaken();
+        // then
+        assert movies != null && movies.size() == 5;
+        assertEquals("Batman Begins", movies.get(0).getMovieInfo().getName());
+    }
+
 }

@@ -43,6 +43,26 @@ public class MoviesClient {
         return movieInfoIds.stream().map(this::retrieveMovie_CF).toList().stream().map(CompletableFuture::join).toList();
     }
 
+    /**
+     * allOf() is used for parallel calls to List of CompletableFuture.
+     * Then result is combined as a CompletableFuture.
+     * */
+    public List<Movie> retrieveMovies_CF_allOf(List<Long> movieInfoIds){
+        List<CompletableFuture<Movie>> cfs = movieInfoIds
+                .stream()
+                .map(this::retrieveMovie_CF)
+                .toList();
+        CompletableFuture<Void> cf = CompletableFuture
+                .allOf(cfs.
+                        toArray(new CompletableFuture[cfs.size()]));
+        return cf
+                .thenApply(v -> cfs
+                        .stream()
+                        .map(CompletableFuture::join)
+                        .toList())
+                .join();
+    }
+
     private MovieInfo invokeMovieInfoService(Long movieInfoId) {
         var moviesInfoUrlPath = "/v1/movie_infos/{movieInfoId}";
         return webClient

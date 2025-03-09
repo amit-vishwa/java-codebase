@@ -118,4 +118,16 @@ class CompletableFutureHelloWorldTest {
         timeTaken();
     }
 
+    @Test
+    void helloWorld_anyOf() {
+        // given
+        // when
+        stopWatchReset();
+        startTimer();
+        String response = cfhw.anyOf();
+        // then
+        assertEquals("hello world", response);
+        timeTaken();
+    }
+
 }

@@ -2,6 +2,7 @@ package com.learnjava.completablefuture;
 
 import com.learnjava.service.HelloWorldService;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -214,6 +215,40 @@ public class CompletableFutureHelloWorld {
                 // thenCompose waits for previous task hence delay will happen
                 .thenCompose(prev->hws.worldFuture(prev))
                 .thenApply(String::toUpperCase);
+    }
+
+    /**
+     * anyOf() calls list of CompletableFuture parallely
+     * and retrieves first response ignore rest CompletableFuture calls
+     * */
+    public String anyOf(){
+        // db response
+        CompletableFuture<String> db = CompletableFuture.supplyAsync(()->{
+            delay(1000);
+            log("response from db");
+            return "hello world";
+        });
+        // rest response
+        CompletableFuture<String> rest = CompletableFuture.supplyAsync(()->{
+            delay(1500);
+            log("response from rest");
+            return "hello world";
+        });
+        // soap response
+        CompletableFuture<String> soap = CompletableFuture.supplyAsync(()->{
+            delay(2000);
+            log("response from soap");
+            return "hello world";
+        });
+        List<CompletableFuture<String>> cfs = List.of(db,rest,soap);
+        CompletableFuture<Object> cf = CompletableFuture.anyOf(cfs.toArray(new CompletableFuture[cfs.size()]));
+        String response = (String) cf.thenApply(res -> {
+            if(res instanceof String){
+                return res;
+            }
+            return null;
+        }).join();
+        return response;
     }
 
     public static void main(String[] args) {
