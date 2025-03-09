@@ -68,6 +68,7 @@ public class CompletableFutureHelloWorld {
         return response;
     }
 
+    // Uses commonPool from ForkJoinPool for thread execution
     public String combineThreeCompletable_Log(){
         stopWatchReset();
         startTimer();
@@ -95,6 +96,7 @@ public class CompletableFutureHelloWorld {
         return response;
     }
 
+    // Uses thread pool for thread execution
     public String combineThreeCompletable_customThreadPool(){
         stopWatchReset();
         startTimer();
@@ -119,6 +121,66 @@ public class CompletableFutureHelloWorld {
                     log("inside thenApply of hi for hicompletablefuturehelloworld");
                     return res.toUpperCase();
                 })
+                .join();
+        timeTaken();
+        return response;
+    }
+
+    // Assigns different threads to execute tasks
+    public String combineThreeCompletable_LogAsync(){
+        stopWatchReset();
+        startTimer();
+        CompletableFuture<String> hcf = CompletableFuture.supplyAsync(hws::hello);
+        CompletableFuture<String> wcf = CompletableFuture.supplyAsync(hws::world);
+        CompletableFuture<String> hicf = CompletableFuture.supplyAsync(()->{
+            delay(1000);
+            return " Hi CompletableFuture!";
+        });
+        String response = hcf
+                .thenCombineAsync(wcf, (h,w) -> {
+                    log("inside thenCombine of hello for world");
+                    return h.concat(w);
+                })
+                .thenCombineAsync(hicf,(prev,curr) -> {
+                    log("inside thenCombine of hi for helloworld");
+                    return prev.concat(curr);
+                })
+                .thenApplyAsync(res -> {
+                    log("inside thenApply of hi for hicompletablefuturehelloworld");
+                    return res.toUpperCase();
+                })
+                .join();
+        timeTaken();
+        return response;
+    }
+
+    /**
+     * Assigns different threads to execute each task
+     * */
+    public String combineThreeCompletable_customThreadPoolAsync(){
+        stopWatchReset();
+        startTimer();
+        ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime()
+                .availableProcessors());
+        CompletableFuture<String> hcf = CompletableFuture.supplyAsync(hws::hello,executorService);
+        CompletableFuture<String> wcf = CompletableFuture.supplyAsync(hws::world,executorService);
+        CompletableFuture<String> hicf = CompletableFuture.supplyAsync(()->{
+            delay(1000);
+            return " Hi CompletableFuture!";
+        },executorService);
+        String response = hcf
+                .thenCombineAsync(wcf, (h,w) -> {
+                    log("inside thenCombine of hello for world");
+                    return h.concat(w);
+                }, executorService)
+                .thenCombineAsync(hicf,(prev,curr) -> {
+                    log("inside thenCombine of hi for helloworld");
+                    return prev.concat(curr);
+                }, executorService)
+                .thenApplyAsync(res -> {
+                    log("inside thenApply of hi for hicompletablefuturehelloworld");
+                    return res.toUpperCase();
+                },executorService)
                 .join();
         timeTaken();
         return response;
