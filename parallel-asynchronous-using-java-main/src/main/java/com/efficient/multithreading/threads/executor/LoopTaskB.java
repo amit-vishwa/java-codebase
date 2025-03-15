@@ -13,16 +13,17 @@ public class LoopTaskB implements Runnable {
 
     @Override
     public void run(){
-        System.out.println("##### <" + this.id + "> Starting #####");
+        System.out.println("##### <TASK-" + this.id + "> Starting #####");
         for(int i = 10; i > 0; i--){
             try {
                 TimeUnit.MILLISECONDS.sleep(500);
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
+                break;
             }
             System.out.println("<" + this.id + "> Tick tick: " + i);
         }
-        System.out.println("##### <" + this.id + "> Ending #####");
+        System.out.println("##### <TASK-" + this.id + "> Ending #####");
     }
 
 }

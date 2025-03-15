@@ -21,7 +21,7 @@ public class CalculationTaskB implements Callable<TaskResult<String, Integer>> {
         this.b = b;
         this.sleepTime = sleepTime;
         this.instanceNumber = ++count;
-        this.taskId = "CalculationTaskA-" + instanceNumber;
+        this.taskId = "CalculationTaskB-" + instanceNumber;
     }
 
     @Override
