@@ -15,3 +15,6 @@ iv. MongoDB
 
 v. Java8
 - It consists of various Java 8 topics to have a quick revision
+  
+vi. Concurrency and Parallelism
+- It consists of concurrency and parallelism concepts of Java multithreading topic
