@@ -1,19 +1,20 @@
-package com.efficient.multithreading.threads.daemon;
+package com.efficient.multithreading.threads.waiting;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-public class LoopTaskD implements Runnable {
+public class LoopTaskI implements Runnable {
 
     private static int count = 0;
     private int instanceNumber;
     private String taskId;
 
-    private long sleepTime;
+    private CountDownLatch countDownLatch;
 
-    public LoopTaskD(long sleepTime){
-        this.sleepTime = sleepTime;
+    public LoopTaskI(CountDownLatch countDownLatch){
         this.instanceNumber = ++count;
-        this.taskId = "LoopTaskD-" + instanceNumber;
+        this.taskId = "LoopTaskI-" + instanceNumber;
+        this.countDownLatch = countDownLatch;
     }
 
     @Override
@@ -23,7 +24,7 @@ public class LoopTaskD implements Runnable {
                 + this.taskId + "> Starting #####");
         for(int i = 5; i > 0; i--){
             try {
-                TimeUnit.MILLISECONDS.sleep(sleepTime);
+                TimeUnit.MILLISECONDS.sleep((long) (Math.random() * 1000));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -32,6 +33,12 @@ public class LoopTaskD implements Runnable {
         }
         System.out.println("##### [" + Thread.currentThread().getName() + "," + threadType + "] <"
                 + this.taskId + "> Ending #####");
+        if(countDownLatch != null){
+            countDownLatch.countDown();
+
+            System.out.println("[" + Thread.currentThread().getName() + "," + threadType + "] <"
+                    + this.taskId + "> Latch count = " + countDownLatch.getCount());
+        }
     }
 
 }
