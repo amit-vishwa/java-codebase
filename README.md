@@ -1,14 +1,10 @@
-# codebase
-Codebase for different skills like Java, DSA, and Spring framework
+# overview
+This repo consists of modern Java topics along with Reflect API
 
-i. Java
-- It consists of various Java topics from beginner to advanced level
+# Modern Java
+This mainly focuses on the topics from Java 8 and higher Java versions
+Udemy source link - https://qube.udemy.com/course/modern-java-learn-java-8-features-by-coding-it/learn/lecture/47629723?start=0#overview
 
-ii. DSA
-- It consists of various data structure topics and some algorithm examples for beginners
-
-iii. Spring
-- It consists of a Spring framework tutorial covering various topics from beginner to advanced
-
-iv. MongoDB
-- It consists of a MongoDB tutorial covering basic CRUD operations using Springboot
+# Reflection
+This consists of the Java Reflection topic
+Udemy source link - https://qube.udemy.com/course/java-reflection-master-class/learn/lecture/35399578?start=1#overview
