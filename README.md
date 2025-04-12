@@ -1,20 +1,10 @@
-# overview
-This repo has learning materials to enhance Java, DSA, and Spring related developer skills
+overview
+This repo has the code for collection framework related topics of Java
 
-i. Java
-- It consists of various Java topics from beginner to advanced level
+i. Java Collections Framework Complete
+This repo has the code for complete collections framework in Java
+Youtube course link - https://www.youtube.com/playlist?list=PLA3GkZPtsafZZsLj0Tybu3y0HVl-hp1ea
 
-ii. DSA
-- It consists of various data structure topics and some algorithm examples for beginners
-
-iii. Spring
-- It consists of a Spring framework tutorial covering various topics for beginner
-
-iv. MongoDB
-- It consists of a MongoDB tutorial covering basic CRUD operations using Springboot
-
-v. Java8
-- It consists of various Java 8 topics along with Reflection to have a quick revision
-
-vi. Multithreading
-- It consists of multithreading concepts like concurrency and parallelism of Java
+ii. Java Collections from basics to Advanced
+This repo has the code from basics to advanced collections framework concepts of Java
+Udemy course link - https://qube.udemy.com/course/collections-and-concurrent-collection-video-lectures-and-tutorials/learn/lecture/13940710#overview
