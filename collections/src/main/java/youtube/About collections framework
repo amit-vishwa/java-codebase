@@ -1,0 +1,14 @@
+Collections framework consists of interface that provides some common methods
+to work with different objects.
+
+Before Java version 2 i.e. jdk 1.2, different classes like ArrayList, LinkedList Vector, Stack
+used to have different methods and it was a tedious tasks to remember all these.
+
+So version 2 collections framework was introduced which provides a common set of interfaces
+for all these classes.
+
+Hierarchy of collections framework is as follows:
+Iterable->Collection->List->ArrayList,LinkedList,Vector,Stack,CopyOnWriteArrayList
+                    ->Set->HashSet,LinkedHashSet,TreeSet,EnumSet,SortedSet,CopyOnWriteArraySet
+                    ->Queue->LinkedList,PriorityQueue,Deque->ArrayDeque,LinkedList,ConcurrentLinkedDeque
+Map->HashMap,LinkedHashMap
