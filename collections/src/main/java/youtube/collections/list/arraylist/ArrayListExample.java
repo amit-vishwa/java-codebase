@@ -1,4 +1,4 @@
-package youtube.collections.arraylist;
+package youtube.collections.list.arraylist;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
