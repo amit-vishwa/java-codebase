@@ -1,6 +1,5 @@
-package youtube.map;
+package youtube.map.hashmap;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;

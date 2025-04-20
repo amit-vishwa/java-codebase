@@ -1,4 +1,4 @@
-package youtube.map;
+package youtube.map.hashmap;
 
 import java.util.Objects;
 
