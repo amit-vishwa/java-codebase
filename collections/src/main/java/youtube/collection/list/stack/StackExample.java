@@ -1,8 +1,7 @@
-package youtube.collections.list.stack;
+package youtube.collection.list.stack;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Stack;
 
 /**

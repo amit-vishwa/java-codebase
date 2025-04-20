@@ -1,6 +1,5 @@
-package youtube.collections.comparator;
+package youtube.collection.comparator;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**

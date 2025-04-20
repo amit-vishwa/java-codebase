@@ -1,4 +1,4 @@
-package youtube.collections.list.vector;
+package youtube.collection.list.vector;
 
 import java.util.ArrayList;
 import java.util.Arrays;

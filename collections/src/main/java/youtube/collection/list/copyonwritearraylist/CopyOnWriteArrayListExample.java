@@ -1,8 +1,7 @@
-package youtube.collections.list.copyonwritearraylist;
+package youtube.collection.list.copyonwritearraylist;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 

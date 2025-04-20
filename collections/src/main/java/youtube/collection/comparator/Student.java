@@ -1,4 +1,4 @@
-package youtube.collections.comparator;
+package youtube.collection.comparator;
 
 
 public class Student {
