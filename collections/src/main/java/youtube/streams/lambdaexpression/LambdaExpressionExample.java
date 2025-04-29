@@ -1,4 +1,4 @@
-package youtube.streams.lambdainterface;
+package youtube.streams.lambdaexpression;
 
 /**
  * Lambda interface was introduced in Java 8 version. The main aim of Java 8 release was to minimise the code.
@@ -6,7 +6,7 @@ package youtube.streams.lambdainterface;
  *
  * Lambda expression is an anonymous function (i.e. no name, no return type and no access modifier)
  * */
-public class LambdaInterfaceExample {
+public class LambdaExpressionExample {
 
     public static void main(String[] args) {
         threadExample();
