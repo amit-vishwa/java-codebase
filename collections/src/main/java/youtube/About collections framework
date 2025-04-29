@@ -12,3 +12,8 @@ Iterable->Collection->List->ArrayList,LinkedList,Vector,Stack,CopyOnWriteArrayLi
                     ->Set->HashSet,LinkedHashSet,TreeSet,EnumSet,SortedSet,CopyOnWriteArraySet
                     ->Queue->LinkedList,PriorityQueue,Deque->ArrayDeque,LinkedList,ConcurrentLinkedDeque
 Map->HashMap,LinkedHashMap
+
+Default initialCapacity is 10 for ArrayList and Vector, and it is 16 for HashMap, and 11 for HashTable.
+The default loadFactor is 0.75f for all collections.
+The default incrementValue is 0.5f for ArrayList and 1f for Vector i.e. ArrayList size increases by 50%
+and for Vector it is 100%. It can be set to different values.
