@@ -1,8 +1,6 @@
 package youtube.java8.stream;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,8 +19,8 @@ public class StreamsExample {
 //        simpleStreamExample();
 //        createStreams();
 //        intermediateOperations();
-//        terminalOperations();
-        examples();
+        terminalOperations();
+//        examples();
     }
 
     private static void simpleStreamExample() {
@@ -117,11 +115,32 @@ public class StreamsExample {
         System.out.println("Without skip example: " + allNumber); // 1,2,3,4,5
         List<Integer> nonSkippedNumbers = Stream.iterate(1,x -> x+1).skip(10).limit(5).toList();
         System.out.println("With skip example: " + nonSkippedNumbers); // 11,12,13,14,15
+
+        // 7. peek - similar to forEach but at intermediate operations
+        long totalNumbers = Stream.iterate(1,x -> x+1).limit(5)
+                .peek(System.out::println).count();
+        System.out.println("Peek count: " + totalNumbers);
+
+        /**
+         * 8. flatMap
+         * - Handle streams of collections, lists, arrays where each element is itself a collection.
+         * - Flatten nested structures (e.g., List<List<T>> to List<T>).
+         * - Transform and flatten elements at the same time.
+         * */
+        List<List<String>> listOfLists = Arrays.asList(Arrays.asList("apple","mange","kiwi"),
+                Arrays.asList("banana","cherry"),Arrays.asList("papaya","orange","guava","pear"));
+        System.out.println("List of lists: " + listOfLists);
+        List<String> fruitList = listOfLists.stream()
+//                .flatMap(s->s.stream())
+                .flatMap(List::stream) // using method reference, works similar to above, returns string
+                .toList();
+        System.out.println("FlatMap: " + fruitList);
     }
 
     /**
      * Terminal operations invokes the intermediate operations to transform a stream to another.
      * They are mandatory to invoke the intermediate operations else, stream creation is of no use.
+     * Streams cannot be used after a terminal method is called.
      * */
     private static void terminalOperations(){
         List<Integer> integers = List.of(1,2,3,4,5);
@@ -161,6 +180,28 @@ public class StreamsExample {
         // 6. findFirst and findAny - short-circuit operations, stops process after getting the result, gives almost same results
         System.out.println("Find first: " + integers.stream().findFirst().get()); // getting optional result
         System.out.println("Find any: " + integers.stream().findAny().get()); // get() for getting optional result
+
+        // 7. toArray
+        System.out.println("Stream to array:" + Arrays.toString(Stream.of(integers).toArray()));
+
+        // 8. max and min - get maximum and minimum element from collection
+        System.out.println("Max: " + integers.stream()
+                .max(Comparator.naturalOrder()).get()); // using method
+        System.out.println("Min: " + integers.stream()
+                .min((x,y)->x-y).get()); // lambda logic
+
+        // 9. forEachOrdered - this is used with parallelStream to get result in order
+        List<Integer> numberList = List.of(1,2,3,4,5,6,7,8,9,10);
+        System.out.println("For each order for parallel stream: ");
+        numberList.parallelStream()
+//                .forEach(System.out::println); // unordered printing
+                .forEachOrdered(System.out::println); // displays in order
+
+        // streams cannot be reused once terminal operation has been performed
+        Stream<Integer> integerStream = integers.stream();
+        integerStream.forEach(System.out::println);
+        // below will give error as stream has already been consumed in above statement
+//        integerStream.map(x-> x*2).forEach(System.out::println);
     }
 
     private static void examples(){
@@ -182,5 +223,13 @@ public class StreamsExample {
         System.out.println(string.chars().filter(x-> x == 'l') //  char 'l' is 108
                 .count());
 
+        // 5. Extract and print each word from list of sentences in upper case
+        List<String> sentences = Arrays.asList("Hello world","Java streams are powerful","flatMap is useful");
+        List<String> words = sentences.stream()
+//                .map(x-> Arrays.stream(x.split(" "))) // returns Stream<Stream>
+                .flatMap(x-> Arrays.stream(x.split(" "))) // returns string
+                .map(String::toUpperCase)
+                .toList();
+        System.out.println(words);
     }
 }
