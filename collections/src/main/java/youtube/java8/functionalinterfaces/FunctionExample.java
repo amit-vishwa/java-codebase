@@ -1,4 +1,4 @@
-package youtube.streams.functionalinterfaces;
+package youtube.java8.functionalinterfaces;
 
 import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;

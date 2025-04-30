@@ -1,6 +1,5 @@
-package youtube.streams.functionalinterfaces;
+package youtube.java8.functionalinterfaces;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiConsumer;

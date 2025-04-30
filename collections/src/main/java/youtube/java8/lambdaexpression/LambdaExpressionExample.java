@@ -1,4 +1,4 @@
-package youtube.streams.lambdaexpression;
+package youtube.java8.lambdaexpression;
 
 /**
  * Lambda interface was introduced in Java 8 version. The main aim of Java 8 release was to minimise the code.

@@ -1,4 +1,4 @@
-package youtube.streams.references;
+package youtube.java8.references;
 
 import java.util.List;
 
