@@ -1,8 +1,10 @@
 package tutorial.java.jdbc.dbconnection;
 
+import tutorial.java.jdbc.DatabaseConfig;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.util.Scanner;
 
 /**
@@ -14,9 +16,9 @@ public class StoreDBData {
 
     public static void main(String[] args) throws Exception
     {
-        String url = "jdbc:mysql://localhost:3306/gfg"; // table details
-        String username = "root"; // MySQL credentials
-        String password = "root";
+        String url = DatabaseConfig.url();
+        String username = DatabaseConfig.username();
+        String password = DatabaseConfig.password();
         Class.forName("com.mysql.cj.jdbc.Driver"); // Driver name
         Connection con = DriverManager.getConnection(url, username, password);
         System.out.println("Connection Established successfully");
@@ -31,12 +33,15 @@ public class StoreDBData {
         String cls = k.next();
 
         // Inserting data using SQL query
-        String sql = "insert into students values('" + roll + "','" + name + "','" + cls + "')";
+        String sql = "insert into students values (?, ?, ?)";
 
-        Statement st = con.createStatement();
-        int m =  st.executeUpdate(sql); // Execute query
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setInt(1, roll);
+        st.setString(2, name);
+        st.setString(3, cls);
+        int m = st.executeUpdate();
         if (m == 1)
-            System.out.println("inserted successfully : " + sql);
+            System.out.println("inserted successfully");
         else
             System.out.println("insertion failed");
 
