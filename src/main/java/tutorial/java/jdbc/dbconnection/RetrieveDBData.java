@@ -1,5 +1,7 @@
 package tutorial.java.jdbc.dbconnection;
 
+import tutorial.java.jdbc.DatabaseConfig;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -33,9 +35,9 @@ public class RetrieveDBData {
 
     public static void main(String[] args) throws Exception
     {
-        String url = "jdbc:mysql://localhost:3306/gfg"; // table details
-        String username = "root"; // MySQL credentials
-        String password = "root";
+        String url = DatabaseConfig.url();
+        String username = DatabaseConfig.username();
+        String password = DatabaseConfig.password();
         String query = "select * from students"; // query to be run
         Class.forName("com.mysql.cj.jdbc.Driver"); // Driver name
         Connection con = DriverManager.getConnection(url, username, password);

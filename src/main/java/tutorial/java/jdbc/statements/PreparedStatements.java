@@ -1,5 +1,7 @@
 package tutorial.java.jdbc.statements;
 
+import tutorial.java.jdbc.DatabaseConfig;
+
 import java.sql.*;
 
 /**
@@ -45,16 +47,14 @@ public class PreparedStatements {
     public static void main(String[] args) {
         try {
 
-            String url = "jdbc:mysql://localhost:3306/gfg"; // table details
-            String username = "root"; // MySQL credentials
-            String password = "root";
+            String url = DatabaseConfig.url();
+            String username = DatabaseConfig.username();
+            String password = DatabaseConfig.password();
             Class.forName("com.mysql.cj.jdbc.Driver"); // Driver name
             Connection con = DriverManager.getConnection(url, username, password);
             System.out.println("Connection Established successfully");
 
             // Create a statement
-            Statement st = con.createStatement();
-            // Execute a query
             String sql = "SELECT * FROM students WHERE rollno = ?";
             int rollno = 2;
             // Using Prepared statement
@@ -70,7 +70,7 @@ public class PreparedStatements {
 
             // Close resources
             rs.close();
-            st.close();
+            ps.close();
             con.close();
         } catch (Exception e) {
             e.printStackTrace();

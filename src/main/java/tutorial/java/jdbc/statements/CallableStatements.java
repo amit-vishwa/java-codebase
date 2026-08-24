@@ -1,5 +1,7 @@
 package tutorial.java.jdbc.statements;
 
+import tutorial.java.jdbc.DatabaseConfig;
+
 import java.sql.*;
 
 /**
@@ -27,9 +29,9 @@ public class CallableStatements {
     public static void main(String[] args) {
         try {
 
-            String url = "jdbc:mysql://localhost:3306/gfg"; // table details
-            String username = "root"; // MySQL credentials
-            String password = "root";
+            String url = DatabaseConfig.url();
+            String username = DatabaseConfig.username();
+            String password = DatabaseConfig.password();
             Class.forName("com.mysql.cj.jdbc.Driver"); // Driver name
             Connection con = DriverManager.getConnection(url, username, password);
             System.out.println("Connection Established successfully");
