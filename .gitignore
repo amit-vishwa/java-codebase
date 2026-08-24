@@ -1,0 +1,13 @@
+# Java compiler and build output
+*.class
+target/
+build/
+out/
+
+# IDE metadata
+.idea/
+*.iml
+
+# Operating-system files
+.DS_Store
+Thumbs.db
