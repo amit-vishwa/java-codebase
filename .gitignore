@@ -1,0 +1,16 @@
+# Java and Gradle build output
+*.class
+.gradle/
+build/
+out/
+
+# IDE metadata
+.idea/
+*.iml
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+
+# Keep the Gradle wrapper JAR required by ./gradlew
+!**/gradle/wrapper/gradle-wrapper.jar
